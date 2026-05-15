@@ -1,4 +1,117 @@
----
+---            - nazwa: Zamknij nieaktualne problemy
+  zastosowania: actions/stale@v10.2.0
+  z:
+    # Token dla repozytorium. Można go przekazać za pomocą `{{ secrets.GITHUB_TOKEN }}`.
+    repo-token: # opcjonalny, domyślnie ${{ github.token }}
+    # Wiadomość do opublikowania w przypadku tagowania problemu. Jeśli nie zostanie podana, problem nie zostanie oznaczony jako nieaktualny.
+    stale-issue-message: # opcjonalny
+    # Komunikat do opublikowania w żądaniu ściągnięcia podczas jego tagowania. Jeśli nie zostanie podany, żądanie ściągnięcia nie zostanie oznaczone jako nieaktualne.
+    stale-pr-message: # opcjonalnie
+    # Wiadomość do opublikowania w zgłoszeniu podczas jego zamykania. Jeśli nie podano żadnej informacji, komentarz nie zostanie opublikowany podczas zamykania zgłoszenia.
+    komunikat o zamknięciu problemu: # opcjonalny
+    # Komunikat do opublikowania w żądaniu ściągnięcia podczas jego zamykania. Jeśli nie podano żadnego, nie będzie komentarza podczas zamykania żądania ściągnięcia.
+    zamknij-komunikat: # opcjonalnie
+    # Liczba dni, w których zgłoszenie lub żądanie ściągnięcia może być starsze niż oznaczenie go jako nieaktualnego. Ustaw wartość -1, aby zgłoszenia lub żądania ściągnięcia nie były automatycznie oznaczane jako nieaktualne.
+    days-before-stale: # opcjonalnie, domyślnie 60
+    # Liczba dni, jakie może mieć zgłoszenie, zanim zostanie oznaczone jako nieaktualne. Ustaw na -1, aby zgłoszenia nigdy nie były automatycznie oznaczane jako nieaktualne. Zastąp opcję „dni-przed-nieaktualne” tylko w odniesieniu do zgłoszeń.
+    days-before-issue-stale: # opcjonalny
+    # Liczba dni, w których żądanie ściągnięcia może być nieaktualne, zanim zostanie oznaczone jako nieaktualne. Ustaw wartość -1, aby nigdy nie oznaczać automatycznie żądań ściągnięcia jako nieaktualnych. Zastąp opcję „dni przed nieaktualnością” tylko w odniesieniu do żądań ściągnięcia.
+    days-before-pr-stale: # opcjonalnie
+    # Liczba dni oczekiwania na zamknięcie zgłoszenia lub żądania ściągnięcia po oznaczeniu go jako nieaktualnego. Ustaw na -1, aby nigdy nie zamykać nieaktualnych zgłoszeń ani żądań ściągnięcia.
+    days-before-close: # opcjonalnie, domyślnie 7
+    # Liczba dni oczekiwania na zamknięcie zgłoszenia po oznaczeniu go jako nieaktualnego. Ustaw na -1, aby nigdy nie zamykać nieaktualnych zgłoszeń. Zastąp opcję „dni przed zamknięciem” tylko w odniesieniu do zgłoszeń.
+    dni przed zamknięciem wydania: # opcjonalnie
+    # Liczba dni oczekiwania na zamknięcie żądania ściągnięcia po oznaczeniu go jako nieaktualnego. Ustaw na -1, aby nigdy nie zamykać nieaktualnych żądań ściągnięcia. Zastąp opcję „dni przed zamknięciem” dotyczącą tylko żądań ściągnięcia.
+    dni przed zamknięciem: # opcjonalnie
+    # Etykieta stosowana, gdy problem jest nieaktualny.
+    stale-issue-label: # opcjonalnie, domyślnie Stale
+    # Etykieta stosowana po zamknięciu zgłoszenia.
+    close-issue-label: # opcjonalnie
+    # Etykiety oznaczające problem nie podlegają oznaczeniu jako nieaktualne. Oddziel etykiety przecinkami (np. „etykieta1,etykieta2”).
+    exempt-issue-labels: # opcjonalne, domyślnie jest
+    # Powód, dla którego należy zamknąć zgłoszenie.
+    close-issue-reason: # opcjonalny, domyślnie nie jest planowany
+    # Etykieta stosowana w przypadku, gdy żądanie ściągnięcia jest nieaktualne.
+    stale-pr-label: # opcjonalnie, domyślnie Stale
+    # Etykieta, która ma zostać zastosowana po zamknięciu żądania ściągnięcia.
+    close-pr-label: # opcjonalnie
+    # Etykiety oznaczające, że żądanie ściągnięcia jest wyłączone z oznaczania jako nieaktualne. Oddziel etykiety przecinkami (np. „etykieta1,etykieta2”).
+    exempt-pr-labels: # opcjonalne, domyślnie jest
+    # Kamienie milowe oznaczające problem lub żądanie ściągnięcia są wyłączone z oznaczania jako nieaktualne. Oddzielaj kamienie milowe przecinkami (np. „kamień milowy1,kamień milowy2”).
+    exempt-milestones: # opcjonalne, domyślnie
+    # Kamienie milowe oznaczające, że problem jest wyłączony z oznaczania jako nieaktualny. Oddzielaj kamienie milowe przecinkami (np. „kamień milowy1,kamień milowy2”). Zastąp opcję „exempt-milestones” tylko w odniesieniu do problemów.
+    exempt-issue-milestones: # opcjonalne, domyślnie
+    # Kamienie milowe, które oznaczają, że żądanie ściągnięcia jest wyłączone z oznaczania jako nieaktualne. Oddzielaj kamienie milowe przecinkami (np. „kamień milowy1,kamień milowy2”). Zastąp opcję „exempt-milestones” tylko w odniesieniu do żądań ściągnięcia.
+    exempt-pr-milestones: # opcjonalne, domyślnie
+    # Wyłącz wszystkie zgłoszenia i żądania ściągnięcia z kamieniami milowymi z oznaczania ich jako nieaktualne. Domyślnie fałsz.
+    exempt-all-milestones: # opcjonalne, wartością domyślną jest false
+    # Wyłącz wszystkie problemy z kamieniami milowymi z oznaczania ich jako nieaktualne. Zastąp opcję „zwolnij-wszystkie-kamienie-miletyczne” tylko w odniesieniu do tych problemów.
+    exempt-all-issue-milestones: # opcjonalne, domyślnie
+    # Wyłącz wszystkie żądania ściągnięcia z kamieniami milowymi z oznaczania ich jako nieaktualne. Zastąp opcję „exempt-all-milestones” tylko w odniesieniu do żądań ściągnięcia.
+    exempt-all-pr-milestones: # opcjonalnie, domyślnie
+    # Sprawdzane są tylko zgłoszenia lub żądania ściągnięcia ze wszystkimi tymi etykietami, jeśli są nieaktualne. Domyślnie `` (wyłączone) i może to być lista etykiet rozdzielonych przecinkami.
+    only-labels: # opcjonalne, domyślnie
+    # Sprawdzane są tylko zgłoszenia lub żądania ściągnięcia z co najmniej jedną z tych etykiet, jeśli są nieaktualne. Domyślnie `` (wyłączone) i może to być lista etykiet rozdzielonych przecinkami.
+    any-of-labels: # opcjonalnie, domyślnie jest
+    # Tylko problemy z co najmniej jedną z tych etykiet są sprawdzane, jeśli są nieaktualne. Domyślnie `` (wyłączone) i może to być lista etykiet rozdzielonych przecinkami. Zastąp opcję „dowolna etykieta” tylko w odniesieniu do tych problemów.
+    any-of-issue-labels: # opcjonalnie, domyślnie
+    # Tylko żądania ściągnięcia z co najmniej jedną z tych etykiet są sprawdzane, jeśli są nieaktualne. Domyślnie `` (wyłączone) i może to być lista etykiet rozdzielonych przecinkami. Zastąp opcję „dowolne etykiety” tylko w odniesieniu do żądań ściągnięcia.
+    any-of-pr-labels: # opcjonalne, domyślnie
+    # Tylko problemy ze wszystkimi tymi etykietami są sprawdzane, jeśli są nieaktualne. Domyślnie `[]` (wyłączone) i może to być lista etykiet rozdzielonych przecinkami. Zastąp opcję „only-labels” dotyczącą tylko tych problemów.
+    only-issue-labels: # opcjonalne, domyślnie
+    # Tylko żądania ściągnięcia ze wszystkimi tymi etykietami są sprawdzane, jeśli są nieaktualne. Domyślnie `[]` (wyłączone) i może to być lista etykiet rozdzielonych przecinkami. Zastąp opcję „only-labels” dotyczącą tylko żądań ściągnięcia.
+    only-pr-labels: # opcjonalnie, domyślnie
+    # Maksymalna liczba operacji na przebieg, używana do kontrolowania ograniczenia szybkości (związane z CRUD w interfejsie API GitHub).
+    operacje-na-uruchomienie: # opcjonalnie, domyślnie 30
+    # Usuwaj nieaktualne etykiety ze zgłoszeń i żądań ściągnięcia, gdy zostaną zaktualizowane lub skomentowane.
+    remove-stale-when-updated: # opcjonalne, domyślnie true
+    # Usuń nieaktualne etykiety ze zgłoszeń po ich aktualizacji lub dodaniu komentarzy. Zastąp opcję „remove-stale-when-updated” tylko w odniesieniu do zgłoszeń.
+    remove-issue-stale-when-updated: # opcjonalnie, domyślnie
+    # Usuń nieaktualne etykiety z żądań ściągnięcia, gdy są aktualizowane lub komentowane. Zastąp opcję „remove-stale-when-updated” tylko w odniesieniu do żądań ściągnięcia.
+    remove-pr-stale-when-updated: # opcjonalnie, domyślnie
+    # Uruchom procesor w trybie debugowania bez wykonywania żadnych operacji na rzeczywistych problemach.
+    tylko do debugowania: # opcjonalnie, domyślnie fałsz
+    # Kolejność zgłaszania problemów lub żądań ściągnięcia. Domyślnie ustawiona jest na false, czyli w kolejności malejącej.
+    rosnąco: # opcjonalnie, domyślnie fałsz
+    # Według czego sortować wyniki. Prawidłowe opcje to `created`, `updated` i `comments`. Domyślnie `created`.
+    sortowanie: # opcjonalne, domyślnie tworzone jest
+    # Usuń gałąź git po zamknięciu nieaktualnego żądania ściągnięcia.
+    delete-branch: # opcjonalnie, domyślnie false
+    # Data używana do pominięcia nieaktualnej akcji w przypadku problemu/żądania ściągnięcia utworzonego przed nią (ISO 8601 lub RFC 2822).
+    data rozpoczęcia: # opcjonalnie, domyślnie
+    # Osoby przypisane, które zwalniają zgłoszenie lub żądanie ściągnięcia z oznaczenia jako nieaktualne. Osoby przypisane należy oddzielić przecinkami (np. „użytkownik1, użytkownik2”).
+    exempt-assignees: # opcjonalnie, domyślnie
+    # Osoby przypisane, które zwalniają zgłoszenie z oznaczenia jako nieaktualne. Oddziel osoby przypisane przecinkami (np. „użytkownik1, użytkownik2”). Zastąp opcję „zwolnij-przypisane” tylko w odniesieniu do zgłoszeń.
+    exempt-issue-assignees: # opcjonalnie, domyślnie
+    # Osoby przypisane, które zwalniają żądanie ściągnięcia z oznaczenia jako nieaktualne. Osoby przypisane należy oddzielić przecinkami (np. „użytkownik1, użytkownik2”). Zastąp opcję „exempt-assignees” tylko w odniesieniu do żądań ściągnięcia.
+    exempt-pr-assignees: # opcjonalnie, domyślnie
+    # Wyłącz wszystkie zgłoszenia i żądania ściągnięcia z przypisaniami, aby nie były oznaczane jako nieaktualne. Domyślnie fałsz.
+    exempt-all-assignees: # opcjonalnie, domyślnie fałsz
+    # Wyłącz wszystkie problemy z osobami przypisanymi z oznaczania ich jako nieaktualne. Zastąp opcję „zwolnij wszystkich osoby przypisane” tylko w odniesieniu do tych problemów.
+    exempt-all-issue-assignees: # opcjonalnie, domyślnie
+    # Wyłącz wszystkie żądania ściągnięcia z osobami przypisanymi z oznaczania ich jako nieaktualne. Zastąp opcję „exempt-all-assignees” tylko w odniesieniu do żądań ściągnięcia.
+    exempt-all-pr-assignees: # opcjonalnie, domyślnie
+    # Wyłącz oznaczanie żądań ściągnięcia wersji roboczej jako nieaktualnych. Domyślnie fałsz.
+    exempt-draft-pr: # opcjonalne, domyślnie fałsz
+    # Wyświetl na końcu pewne statystyki dotyczące nieaktualnego przepływu pracy (tylko gdy rejestry są włączone).
+    enable-statistics: # opcjonalne, domyślnie true
+    # Lista etykiet rozdzielonych przecinkami, które należy dodać, gdy problem lub żądanie ściągnięcia stanie się nieaktualne.
+    etykiety-do-dodania-po-odświeżeniu: # opcjonalne, domyślnie jest
+    # Lista etykiet rozdzielonych przecinkami, które należy usunąć, gdy problem lub żądanie ściągnięcia stanie się nieaktualne.
+    etykiety-do-usunięcia-gdy-nieaktualne: # opcjonalnie, domyślnie jest
+    # Lista etykiet rozdzielonych przecinkami, które należy usunąć, gdy problem lub żądanie ściągnięcia stanie się nieaktualne.
+    etykiety-do-usunięcia-po-odświeżeniu: # opcjonalnie, domyślnie jest
+    # Każda aktualizacja (aktualizacja/komentarz) może zresetować nieaktualny czas bezczynności dla zgłoszeń i żądań ściągnięcia.
+    ignore-updates: # opcjonalne, domyślnie false
+    # Każda aktualizacja (aktualizacja/komentarz) może zresetować nieaktualny czas bezczynności dla zgłoszeń. Należy pominąć opcję „ignore-updates” dotyczącą tylko zgłoszeń.
+    ignore-issue-updates: # opcjonalnie, domyślnie
+    # Każda aktualizacja (aktualizacja/komentarz) może zresetować czas bezczynności w żądaniach ściągnięcia. Należy pominąć opcję „ignore-updates” dotyczącą tylko żądań ściągnięcia.
+    ignore-pr-updates: # opcjonalnie, domyślnie
+    # Jako nieaktualne zostaną automatycznie oznaczone tylko te problemy lub żądania ściągnięcia, do których przypisano osobę odpowiedzialną.
+    include-only-assigned: # opcjonalne, wartością domyślną jest false
+    # Tylko zgłoszenia pasujące do typu są przetwarzane jako nieaktualne/zamknięte. Domyślnie `[]` (wyłączone) i może to być lista typów zgłoszeń rozdzielona przecinkami.
+    only-issue-types: # opcjonalnie, domyślnie
+          
 name: Build
 on:
   push:

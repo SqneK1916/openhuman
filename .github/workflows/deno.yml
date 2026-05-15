@@ -7,12 +7,12 @@
 # For more information see: https://github.com/denoland/setup-deno
 
 name: Deno
-
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches:
+    - main
+    - release/*
+
 
 permissions:
   contents: read
